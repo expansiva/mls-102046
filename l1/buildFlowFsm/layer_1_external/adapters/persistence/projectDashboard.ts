@@ -11,8 +11,9 @@ export const projectDashboardTableDef: TableDefinition = {
   storageProfile: 'postgres',
   writeMode: 'sync',
   columns: [
+    { name: 'singleton_id', postgresType: 'TEXT' },
     { name: 'details', postgresType: 'JSONB', nullable: true },
   ],
-  primaryKey: [],
+  primaryKey: ['singleton_id'],
   version: 1,
 };

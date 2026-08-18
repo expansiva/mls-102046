@@ -11,9 +11,10 @@ export const fieldCoordinatorTableDef: TableDefinition = {
   storageProfile: 'postgres',
   writeMode: 'sync',
   columns: [
+    { name: 'field_coordinator_id', postgresType: 'UUID' },
     { name: 'details', postgresType: 'JSONB', nullable: true },
   ],
-  primaryKey: [],
+  primaryKey: ['field_coordinator_id'],
   indexes: [],
   version: 1,
 };

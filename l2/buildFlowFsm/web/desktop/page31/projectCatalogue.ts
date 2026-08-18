@@ -205,7 +205,7 @@ export class BuildFlowFsmDesktopPage31ProjectCataloguePage extends BuildFlowFsmP
                               }}
                             >
                               <td class="px-3 py-3 font-medium">${project.name}</td>
-                              <td class="px-3 py-3">${project.clientName ?? project.clientId}</td>
+                              <td class="px-3 py-3">${project.name ?? project.clientId}</td>
                               <td class="px-3 py-3">${project.status}</td>
                               <td class="px-3 py-3">${project.authorizedBudget}</td>
                               <td class="px-3 py-3">${project.plannedStartDate}</td>
