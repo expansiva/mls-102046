@@ -2,150 +2,164 @@
 
 import { html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { BuildFlowFsmForwardChangeOrderForClientApprovalBase } from '/_102046_/l2/buildFlowFsm/web/shared/forwardChangeOrderForClientApproval.js';
+import { messages, BuildFlowFsmForwardChangeOrderForClientApprovalBase } from '/_102046_/l2/buildFlowFsm/web/shared/forwardChangeOrderForClientApproval.js';
 
-const formatDate = (value: string | null | undefined): string => {
-  if (!value) return '';
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? value : date.toLocaleString();
-};
+const collab_i18n_pt = {
+  'page.title': messages['pt']['section.forwardChangeOrderForClientApproval.locateChangeOrder.title'],
+  'orders.title': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.title'],
+  'orders.empty': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.empty'],
+  'orders.changeOrderId': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.changeOrderId.label'],
+  'orders.clientRef': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.clientRef.label'],
+  'orders.projectRef': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.projectRef.label'],
+  'orders.description': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.description.label'],
+  'orders.scopeImpact': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.scopeImpact.label'],
+  'orders.scheduleImpact': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.scheduleImpact.label'],
+  'orders.changeAmount': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.changeAmount.label'],
+  'orders.submittedAt': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.submittedAt.label'],
+  'orders.forwardedAt': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.forwardedForClientApprovalAt.label'],
+  'orders.status': messages['pt']['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.status.label'],
+  'handoff.title': messages['pt']['section.forwardChangeOrderForClientApproval.handoffChangeOrderToClient.title'],
+  'form.title': messages['pt']['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.title'],
+  'form.action': messages['pt']['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.action.cmdHandoffChangeOrderToClient'],
+  'form.description': messages['pt']['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.description.label'],
+  'form.scopeImpact': messages['pt']['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.scopeImpact.label'],
+  'form.scheduleImpact': messages['pt']['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.scheduleImpact.label'],
+  'form.changeAmount': messages['pt']['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.changeAmount.label'],
+  'action.success': messages['pt']['action.cmdHandoffChangeOrderToClient.success'],
+  'action.error': messages['pt']['action.cmdHandoffChangeOrderToClient.error'],
+} as const;
+
+type CollabI18n = typeof collab_i18n_pt;
+const collab_i18n: { pt: CollabI18n } = { pt: collab_i18n_pt };
+
+function field(row: unknown, name: string): string {
+  if (typeof row !== 'object' || row === null) return '';
+  const value = (row as Record<string, unknown>)[name];
+  if (value === null || value === undefined) return '';
+  return typeof value === 'string' ? value : String(value);
+}
 
 @customElement('build-flow-fsm--web--desktop--page11--forward-change-order-for-client-approval-102046')
 export class BuildFlowFsmDesktopPage11ForwardChangeOrderForClientApprovalPage extends BuildFlowFsmForwardChangeOrderForClientApprovalBase {
+  private get msg(): CollabI18n {
+    return collab_i18n.pt;
+  }
+
   render() {
     return html`
       <main class="min-h-full bg-[var(--page-bg,#ffffff)] text-[var(--text-default,#0f172a)]">
         <div class="max-w-6xl mx-auto px-4 py-6 space-y-6">
-          ${this.renderChangeOrderList()}
-          ${this.renderHandoffForm()}
+          ${this.renderHeader()}
+          ${this.renderOrders()}
+          ${this.renderHandoff()}
         </div>
       </main>
     `;
   }
 
-  renderChangeOrderList() {
+  renderHeader() {
+    const msg = this.msg;
+    return html`
+      <header>
+        <h1 class="text-2xl font-bold text-[var(--text-strong,#0f172a)]">${msg['page.title']}</h1>
+      </header>
+    `;
+  }
+
+  renderOrders() {
     const msg = this.msg;
     const rows = this.qryLocateChangeOrderData ?? [];
     const loading = this.qryLocateChangeOrderState === 'loading';
     return html`
-      <section class="space-y-4">
-        <h1 class="text-2xl font-semibold text-[var(--text-strong,#0f172a)]">
-          ${msg['section.forwardChangeOrderForClientApproval.locateChangeOrder.title']}
-        </h1>
-        <div class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] shadow-[var(--shadow-small,0_1px_2px_rgba(0,0,0,0.08))] overflow-x-auto">
-          <div class="p-4 border-b border-[var(--border-subtle,#e2e8f0)] flex items-center justify-between gap-4">
-            <h2 class="text-lg font-semibold text-[var(--text-strong,#0f172a)]">
-              ${msg['organism.forwardChangeOrderForClientApproval.qryLocateChangeOrder.title']}
-            </h2>
-            <button
-              type="button"
-              class="rounded-md bg-[var(--button-secondary-bg,#ffffff)] text-[var(--button-secondary-text,#0f172a)] border border-[var(--button-secondary-border,#cbd5e1)] px-3 py-2"
-              ?disabled=${loading}
-              @click=${(event: Event) => this.handleQryLocateChangeOrderClick(event)}
-            >
-              ${loading ? msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.title'] : msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.title']}
-            </button>
-          </div>
-          ${loading
-            ? html`<div class="p-6 text-[var(--text-muted,#64748b)]" role="status">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.title']}</div>`
-            : rows.length === 0
-              ? html`<div class="p-6 text-[var(--text-muted,#64748b)]">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.empty']}</div>`
-              : html`
-                <table class="min-w-full text-sm">
-                  <thead class="bg-[var(--surface-alt-bg,#f8fafc)] text-left">
-                    <tr>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.changeOrderId.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.clientRef.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.projectRef.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.description.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.scopeImpact.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.scheduleImpact.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.changeAmount.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.submittedAt.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.forwardedForClientApprovalAt.label']}</th>
-                      <th class="p-3">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.status.label']}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${rows.map((row) => html`
-                      <tr
-                        class="border-t border-[var(--border-subtle,#e2e8f0)] cursor-pointer hover:bg-[var(--selected-bg,#f1f5f9)]"
-                        @click=${() => this.setCmdHandoffChangeOrderToClientChangeOrderChangeOrderId(row.changeOrderId)}
-                      >
-                        <td class="p-3 font-medium">${row.changeOrderId}</td>
-                        <td class="p-3">${row.clientRef}</td>
-                        <td class="p-3">${row.projectRef}</td>
-                        <td class="p-3">${row.description}</td>
-                        <td class="p-3">${row.scopeImpact}</td>
-                        <td class="p-3">${row.scheduleImpact}</td>
-                        <td class="p-3">${row.changeAmount}</td>
-                        <td class="p-3">${formatDate(row.submittedAt)}</td>
-                        <td class="p-3">${formatDate(row.forwardedForClientApprovalAt)}</td>
-                        <td class="p-3">${row.status}</td>
-                      </tr>
-                    `)}
-                  </tbody>
-                </table>
-              `}
+      <section class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] shadow-sm p-4 space-y-4">
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="text-lg font-semibold text-[var(--text-strong,#0f172a)]">${msg['orders.title']}</h2>
+          <button
+            type="button"
+            class="rounded-md bg-[var(--button-secondary-bg,#f8fafc)] text-[var(--button-secondary-text,#0f172a)] border border-[var(--button-secondary-border,#cbd5e1)] px-3 py-2"
+            @click=${this.handleQryLocateChangeOrderClick}
+            ?disabled=${loading}
+          >${loading ? msg['orders.title'] : msg['orders.title']}</button>
         </div>
+        ${loading ? html`<div class="h-24 animate-pulse rounded-md bg-[var(--surface-alt-bg,#f1f5f9)]" aria-busy="true"></div>` : nothing}
+        ${!loading && rows.length === 0 ? html`<p class="text-[var(--text-muted,#64748b)]">${msg['orders.empty']}</p>` : nothing}
+        ${!loading && rows.length > 0 ? html`
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="border-b border-[var(--border-subtle,#e2e8f0)] text-left text-[var(--text-muted,#64748b)]">
+                  <th class="px-3 py-2">${msg['orders.changeOrderId']}</th>
+                  <th class="px-3 py-2">${msg['orders.clientRef']}</th>
+                  <th class="px-3 py-2">${msg['orders.projectRef']}</th>
+                  <th class="px-3 py-2">${msg['orders.description']}</th>
+                  <th class="px-3 py-2">${msg['orders.scopeImpact']}</th>
+                  <th class="px-3 py-2">${msg['orders.scheduleImpact']}</th>
+                  <th class="px-3 py-2">${msg['orders.changeAmount']}</th>
+                  <th class="px-3 py-2">${msg['orders.submittedAt']}</th>
+                  <th class="px-3 py-2">${msg['orders.forwardedAt']}</th>
+                  <th class="px-3 py-2">${msg['orders.status']}</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows.map((row: unknown) => html`
+                  <tr class="border-b border-[var(--border-subtle,#e2e8f0)] align-top">
+                    <td class="px-3 py-2">
+                      <button type="button" class="text-[var(--link-text,#2563eb)] underline" @click=${() => this.setCmdHandoffChangeOrderToClientChangeOrderChangeOrderId(field(row, 'changeOrderId'))}>${field(row, 'changeOrderId')}</button>
+                    </td>
+                    <td class="px-3 py-2">${field(row, 'clientRef')}</td>
+                    <td class="px-3 py-2">${field(row, 'projectRef')}</td>
+                    <td class="px-3 py-2">${field(row, 'description')}</td>
+                    <td class="px-3 py-2">${field(row, 'scopeImpact')}</td>
+                    <td class="px-3 py-2">${field(row, 'scheduleImpact')}</td>
+                    <td class="px-3 py-2">${field(row, 'changeAmount')}</td>
+                    <td class="px-3 py-2">${field(row, 'submittedAt')}</td>
+                    <td class="px-3 py-2">${field(row, 'forwardedForClientApprovalAt')}</td>
+                    <td class="px-3 py-2">${field(row, 'status')}</td>
+                  </tr>
+                `)}
+              </tbody>
+            </table>
+          </div>
+        ` : nothing}
       </section>
     `;
   }
 
-  renderHandoffForm() {
+  renderHandoff() {
     const msg = this.msg;
-    const loading = this.cmdHandoffChangeOrderToClientState === 'loading';
-    const success = this.cmdHandoffChangeOrderToClientState === 'success';
-    const error = this.cmdHandoffChangeOrderToClientState === 'error';
-    const selectedId = this.cmdHandoffChangeOrderToClientChangeOrderChangeOrderId;
+    const busy = this.cmdHandoffChangeOrderToClientState === 'loading';
+    const selected = this.cmdHandoffChangeOrderToClientChangeOrderChangeOrderId;
+    const rows = this.qryLocateChangeOrderData ?? [];
     return html`
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-[var(--text-strong,#0f172a)]">
-          ${msg['section.forwardChangeOrderForClientApproval.handoffChangeOrderToClient.title']}
-        </h2>
-        <div class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] p-5 shadow-[var(--shadow-small,0_1px_2px_rgba(0,0,0,0.08))]">
-          <h3 class="text-lg font-semibold text-[var(--text-strong,#0f172a)] mb-4">
-            ${msg['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.title']}
-          </h3>
-          <form class="space-y-4" @submit=${(event: Event) => { event.preventDefault(); this.handleCmdHandoffChangeOrderToClientClick(event); }}>
-            <div>
-              <label class="block text-sm font-medium mb-1">${msg['intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.changeOrderId.label']}</label>
-              <select
-                class="w-full rounded-md border border-[var(--border-default,#e2e8f0)] bg-[var(--input-bg,#ffffff)] px-3 py-2"
-                .value=${selectedId}
-                required
-                @change=${(event: Event) => this.handleCmdHandoffChangeOrderToClientChangeOrderChangeOrderIdChange(event)}
-              >
-                <option value=""></option>
-                ${rowsForSelection(this.qryLocateChangeOrderData).map((row) => html`<option value=${row.changeOrderId}>${row.changeOrderId}</option>`)}
-              </select>
-            </div>
-            <label class="block text-sm font-medium">
-              ${msg['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.description.label']}
-              <textarea class="mt-1 w-full rounded-md border border-[var(--border-default,#e2e8f0)] bg-[var(--input-bg,#ffffff)] px-3 py-2" required .value=${this.cmdHandoffChangeOrderToClientDescription} @input=${(event: Event) => this.handleCmdHandoffChangeOrderToClientDescriptionChange(event)}></textarea>
-            </label>
-            <label class="block text-sm font-medium">
-              ${msg['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.scopeImpact.label']}
-              <textarea class="mt-1 w-full rounded-md border border-[var(--border-default,#e2e8f0)] bg-[var(--input-bg,#ffffff)] px-3 py-2" required .value=${this.cmdHandoffChangeOrderToClientScopeImpact} @input=${(event: Event) => this.handleCmdHandoffChangeOrderToClientScopeImpactChange(event)}></textarea>
-            </label>
-            <label class="block text-sm font-medium">
-              ${msg['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.scheduleImpact.label']}
-              <textarea class="mt-1 w-full rounded-md border border-[var(--border-default,#e2e8f0)] bg-[var(--input-bg,#ffffff)] px-3 py-2" required .value=${this.cmdHandoffChangeOrderToClientScheduleImpact} @input=${(event: Event) => this.handleCmdHandoffChangeOrderToClientScheduleImpactChange(event)}></textarea>
-            </label>
-            <label class="block text-sm font-medium">
-              ${msg['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.changeAmount.label']}
-              <input type="text" class="mt-1 w-full rounded-md border border-[var(--border-default,#e2e8f0)] bg-[var(--input-bg,#ffffff)] px-3 py-2" required .value=${this.cmdHandoffChangeOrderToClientChangeAmount} @input=${(event: Event) => this.handleCmdHandoffChangeOrderToClientChangeAmountChange(event)} />
-            </label>
-            <button type="submit" class="rounded-md bg-[var(--button-primary-bg,#2563eb)] text-[var(--button-primary-text,#ffffff)] px-4 py-2" ?disabled=${loading || !selectedId}>
-              ${loading ? msg['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.title'] : msg['intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.action.cmdHandoffChangeOrderToClient']}
-            </button>
-          </form>
-          ${success ? html`<p class="mt-4 rounded-md bg-[var(--status-success-bg,#dcfce7)] text-[var(--status-success-text,#166534)] p-3" role="status">${msg['action.cmdHandoffChangeOrderToClient.success']}</p>` : nothing}
-          ${error ? html`<p class="mt-4 rounded-md bg-[var(--status-error-bg,#fee2e2)] text-[var(--status-error-text,#991b1b)] p-3" role="alert">${this.cmdHandoffChangeOrderToClientError || msg['action.cmdHandoffChangeOrderToClient.error']}</p>` : nothing}
-        </div>
+      <section class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] shadow-sm p-4 space-y-4">
+        <h2 class="text-lg font-semibold text-[var(--text-strong,#0f172a)]">${msg['handoff.title']}</h2>
+        <form class="space-y-4" @submit=${this.handleCmdHandoffChangeOrderToClientClick}>
+          <h3 class="font-medium">${msg['form.title']}</h3>
+          <div>
+            <label class="block text-sm font-medium" for="change-order-id">${msg['orders.changeOrderId']}</label>
+            <select id="change-order-id" class="mt-1 w-full rounded-md border border-[var(--border-default,#cbd5e1)] bg-[var(--input-bg,#ffffff)] px-3 py-2" .value=${selected} @change=${this.handleCmdHandoffChangeOrderToClientChangeOrderChangeOrderIdChange}>
+              <option value="">${msg['orders.empty']}</option>
+              ${rows.map((row: unknown) => { const id = field(row, 'changeOrderId'); return html`<option value=${id}>${id}</option>`; })}
+            </select>
+          </div>
+          ${this.renderInput('description', msg['form.description'], this.cmdHandoffChangeOrderToClientDescription, this.handleCmdHandoffChangeOrderToClientDescriptionChange)}
+          ${this.renderInput('scope-impact', msg['form.scopeImpact'], this.cmdHandoffChangeOrderToClientScopeImpact, this.handleCmdHandoffChangeOrderToClientScopeImpactChange)}
+          ${this.renderInput('schedule-impact', msg['form.scheduleImpact'], this.cmdHandoffChangeOrderToClientScheduleImpact, this.handleCmdHandoffChangeOrderToClientScheduleImpactChange)}
+          ${this.renderInput('change-amount', msg['form.changeAmount'], this.cmdHandoffChangeOrderToClientChangeAmount, this.handleCmdHandoffChangeOrderToClientChangeAmountChange, 'number')}
+          <button type="submit" class="rounded-md bg-[var(--button-primary-bg,#2563eb)] text-[var(--button-primary-text,#ffffff)] px-4 py-2" ?disabled=${busy || selected.length === 0}>${busy ? msg['form.action'] : msg['form.action']}</button>
+        </form>
+        ${this.cmdHandoffChangeOrderToClientState === 'success' ? html`<details open class="rounded-md bg-[var(--status-success-bg,#dcfce7)] text-[var(--status-success-text,#166534)] p-3"><summary>${msg['action.success']}</summary><p>${msg['action.success']}</p></details>` : nothing}
+        ${this.cmdHandoffChangeOrderToClientState === 'error' ? html`<details open class="rounded-md bg-[var(--status-error-bg,#fee2e2)] text-[var(--status-error-text,#991b1b)] p-3"><summary>${msg['action.error']}</summary><p>${this.cmdHandoffChangeOrderToClientError || msg['action.error']}</p></details>` : nothing}
       </section>
+    `;
+  }
+
+  renderInput(id: string, label: string, value: string, handler: (event: Event) => void, type = 'text') {
+    return html`
+      <div>
+        <label class="block text-sm font-medium" for=${id}>${label}</label>
+        <input id=${id} type=${type} required class="mt-1 w-full rounded-md border border-[var(--border-default,#cbd5e1)] bg-[var(--input-bg,#ffffff)] px-3 py-2" .value=${value} @input=${handler} />
+      </div>
     `;
   }
 }
-
-const rowsForSelection = <T extends { changeOrderId: string }>(rows: T[] | null | undefined): T[] => rows ?? [];
