@@ -2,157 +2,116 @@
 
 import { html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import type { MessageType } from '/_102046_/l2/buildFlowFsm/web/shared/monitorDailyProjectRecords.js';
-import { BuildFlowFsmMonitorDailyProjectRecordsBase } from '/_102046_/l2/buildFlowFsm/web/shared/monitorDailyProjectRecords.js';
+import {
+  BuildFlowFsmMonitorDailyProjectRecordsBase,
+  messages,
+  type MessageType,
+} from '/_102046_/l2/buildFlowFsm/web/shared/monitorDailyProjectRecords.js';
 
-@customElement('build-flow-fsm--web--desktop--page31--monitor-daily-project-records-102046')
+const collab_i18n_pt = messages['pt'];
+type CollabI18n = MessageType;
+const collab_i18n: { pt: CollabI18n } = { pt: collab_i18n_pt };
+
+@customElement('monitor-daily-project-records--desktop--page31--monitor-daily-project-records-102046')
 export class MonitorDailyProjectRecordsDesktopPage31MonitorDailyProjectRecordsPage extends BuildFlowFsmMonitorDailyProjectRecordsBase {
+  get msg(): CollabI18n {
+    return collab_i18n.pt;
+  }
+
   render() {
     const msg = this.msg;
-    type Entry = readonly [string, keyof MessageType];
-    type RecordValue = Record<string, unknown>;
-
-    const asRecord = (value: object | null | undefined): RecordValue => value as RecordValue;
-    const asArray = (value: unknown): unknown[] => Array.isArray(value) ? value : [];
-    const displayValue = (value: unknown): string => {
+    const asRecord = (value: unknown): Record<string, unknown> | null => {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        return value as Record<string, unknown>;
+      }
+      return null;
+    };
+    const display = (value: unknown): string => {
       if (value === null || value === undefined) return '';
-      if (Array.isArray(value)) return value.join(', ');
+      if (Array.isArray(value)) {
+        return value.map((item: unknown) => display(item)).join(', ');
+      }
       if (typeof value === 'object') return JSON.stringify(value);
       return String(value);
     };
-    const collection = (value: object | null | undefined, names: string[]): unknown[] => {
-      const record = asRecord(value);
-      for (const name of names) {
-        const found = record[name];
-        if (Array.isArray(found)) return found;
+    const idList = (value: unknown): string[] => {
+      if (Array.isArray(value)) {
+        return value.map((item: unknown) => display(item)).filter((item: string) => item.length > 0);
       }
+      if (typeof value === 'string' && value.length > 0) return [value];
       return [];
     };
-    const ids = (value: object | null | undefined, names: string[]): string[] =>
-      collection(value, names).map((item: unknown): string => String(item));
-
-    const projectRows: unknown[] = this.qryLocateProjectData ?? [];
-    const overview = this.qryInspectProjectExecutionOverviewData;
-    const overviewRecord = asRecord(overview);
-    const timeLogIds = ids(overview, ['timeLogIds']);
-    const materialUsageIds = ids(overview, ['materialUsageIds']);
-    const timeLogRows = collection(this.qryInspectProjectTimeLogsData, ['timeLogs', 'items', 'records']);
-    const materialRows = collection(this.qryInspectProjectMaterialUsagesData, ['materialUsages', 'items', 'records']);
-
-    const projectFields: Entry[] = [
-      ['name', 'intent.monitorDailyProjectRecords.qryLocateProject.list.column.name.label'],
-      ['status', 'intent.monitorDailyProjectRecords.qryLocateProject.list.column.status.label'],
-      ['plannedStartDate', 'intent.monitorDailyProjectRecords.qryLocateProject.list.column.plannedStartDate.label'],
-      ['plannedEndDate', 'intent.monitorDailyProjectRecords.qryLocateProject.list.column.plannedEndDate.label'],
-      ['authorizedBudget', 'intent.monitorDailyProjectRecords.qryLocateProject.list.column.authorizedBudget.label'],
+    const valueFrom = (row: unknown, names: string[]): unknown => {
+      const record = asRecord(row);
+      if (record === null) return undefined;
+      for (const name of names) {
+        if (record[name] !== undefined && record[name] !== null) return record[name];
+      }
+      return undefined;
+    };
+    const locateRows = this.qryLocateProjectData;
+    const selectedProjectId = this.qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId;
+    const overview = asRecord(this.qryInspectProjectExecutionOverviewData);
+    const overviewRows = overview === null
+      ? []
+      : Object.values(overview).find((value: unknown) => Array.isArray(value)) as unknown[] | undefined ?? [];
+    const timeLogRecord = asRecord(this.qryInspectProjectTimeLogsData);
+    const timeLogRows = timeLogRecord === null
+      ? []
+      : Object.values(timeLogRecord).find((value: unknown) => Array.isArray(value)) as unknown[] | undefined ?? [];
+    const materialRecord = asRecord(this.qryInspectProjectMaterialUsagesData);
+    const materialRows = materialRecord === null
+      ? []
+      : Object.values(materialRecord).find((value: unknown) => Array.isArray(value)) as unknown[] | undefined ?? [];
+    const overviewFields: Array<[keyof MessageType, string[]]> = [
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.projectName.label', ['projectName', 'name']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.projectStatus.label', ['projectStatus', 'status']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.taskSummary.label', ['taskSummary']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.upcomingCommitments.label', ['upcomingCommitments']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.totalLoggedHours.label', ['totalLoggedHours']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.materialUsageSummary.label', ['materialUsageSummary']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualLaborCost.label', ['actualLaborCost']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualMaterialCost.label', ['actualMaterialCost']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualCost.label', ['actualCost']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.budgetAmount.label', ['budgetAmount']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.costVariance.label', ['costVariance']],
+      ['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.changeOrderImpactSummary.label', ['changeOrderImpactSummary']],
     ];
-    const overviewFields: Entry[] = [
-      ['projectName', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.projectName.label'],
-      ['projectStatus', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.projectStatus.label'],
-      ['taskSummary', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.taskSummary.label'],
-      ['upcomingCommitments', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.upcomingCommitments.label'],
-      ['totalLoggedHours', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.totalLoggedHours.label'],
-      ['materialUsageSummary', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.materialUsageSummary.label'],
-      ['actualLaborCost', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualLaborCost.label'],
-      ['actualMaterialCost', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualMaterialCost.label'],
-      ['actualCost', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualCost.label'],
-      ['budgetAmount', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.budgetAmount.label'],
-      ['costVariance', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.costVariance.label'],
-      ['changeOrderImpactSummary', 'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.changeOrderImpactSummary.label'],
-    ];
-    const timeLogFields: Entry[] = [
-      ['status', 'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.status.label'],
-      ['workTaskId', 'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.workTaskId.label'],
-      ['fieldWorkerId', 'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.fieldWorkerId.label'],
-      ['workDate', 'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.workDate.label'],
-      ['hoursWorked', 'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.hoursWorked.label'],
-      ['hourlyLaborCost', 'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.hourlyLaborCost.label'],
-    ];
-    const materialFields: Entry[] = [
-      ['status', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.status.label'],
-      ['projectId', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.projectId.label'],
-      ['inventoryItemId', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.inventoryItemId.label'],
-      ['inventoryBalanceId', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.inventoryBalanceId.label'],
-      ['quantity', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.quantity.label'],
-      ['usageDescription', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.usageDescription.label'],
-      ['consumedOn', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.consumedOn.label'],
-      ['unitCostBasis', 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.unitCostBasis.label'],
-    ];
-
-    const renderFields = (record: RecordValue, fields: Entry[]) => html`
-      <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        ${fields.map((entry: Entry) => {
-          const field = entry[0];
-          const labelKey = entry[1];
-          const value = record[field];
-          return value === undefined || value === null
-            ? nothing
-            : html`<div class="rounded-md border border-[var(--border-subtle,#e2e8f0)] bg-[var(--surface-alt-bg,#f8fafc)] p-3">
-                <dt class="text-sm text-[var(--text-muted,#64748b)]">${msg[labelKey]}</dt>
-                <dd class="mt-1 text-sm text-[var(--text-default,#0f172a)]">${displayValue(value)}</dd>
-              </div>`;
-        })}
-      </dl>
-    `;
+    const locateLabel = (key: keyof MessageType): string => msg[key];
+    const renderRows = (rows: unknown[], emptyKey: keyof MessageType, columns: Array<[keyof MessageType, string[]]>) => rows.length === 0
+      ? html`<p class="p-4 text-[var(--text-muted,#64748b)]">${msg[emptyKey]}</p>`
+      : html`<div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="border-b border-[var(--border-subtle,#e2e8f0)]">${columns.map(([key]) => html`<th class="px-3 py-2 text-[var(--text-muted,#64748b)]">${locateLabel(key)}</th>`)}</tr></thead><tbody>${rows.map((row: unknown) => html`<tr class="border-b border-[var(--border-subtle,#e2e8f0)]">${columns.map(([, names]) => html`<td class="px-3 py-2">${display(valueFrom(row, names))}</td>`)}</tr>`)}</tbody></table></div>`;
 
     return html`
-      <main class="space-y-6 bg-[var(--page-bg,#f8fafc)] p-4 text-[var(--text-default,#0f172a)] md:p-6">
-        <section class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] p-4 shadow-[var(--shadow-small,0_1px_3px_rgba(0,0,0,0.1))]">
-          <h2 class="mb-4 text-lg font-semibold text-[var(--text-strong,#0f172a)]">${msg['section.monitorDailyProjectRecords.project-selection.title']}</h2>
-          ${this.qryLocateProjectState === 'loading'
-            ? html`<p class="text-sm text-[var(--text-muted,#64748b)]">${msg['organism.monitorDailyProjectRecords.qryLocateProject.title']}</p>`
-            : html`
-              <p class="mb-3 text-base font-medium">${msg['intent.monitorDailyProjectRecords.qryLocateProject.list.title']}</p>
-              ${projectRows.length === 0
-                ? html`<p class="text-sm text-[var(--text-muted,#64748b)]">${msg['intent.monitorDailyProjectRecords.qryLocateProject.list.empty']}</p>`
-                : html`<div class="space-y-2">
-                    ${projectRows.map((item: unknown) => {
-                      const project = asRecord(item);
-                      const projectId = String(project['projectId'] ?? '');
-                      return html`<button type="button" class="block w-full rounded-md border border-[var(--border-subtle,#e2e8f0)] p-3 text-left hover:bg-[var(--selected-bg,#eff6ff)]" .value=${projectId} @click=${() => {
-                        if (projectId) this.setQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId(projectId);
-                      }}>
-                        ${renderFields(project, projectFields)}
-                      </button>`;
-                    })}
-                  </div>`}
-              <button type="button" class="mt-4 rounded-md bg-[var(--button-primary-bg,#2563eb)] px-4 py-2 text-sm font-medium text-[var(--button-primary-text,#ffffff)] disabled:opacity-50" ?disabled=${!this.qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId || this.qryInspectProjectExecutionOverviewState === 'loading'} @click=${this.handleQryInspectProjectExecutionOverviewClick}>${msg['organism.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.title']}</button>
-            `}
-          ${this.qryLocateProjectState !== 'success' && projectRows.length === 0
-            ? html`<button type="button" class="mt-4 rounded-md bg-[var(--button-secondary-bg,#ffffff)] px-4 py-2 text-sm text-[var(--button-secondary-text,#334155)]" @click=${this.handleQryLocateProjectClick}>${msg['organism.monitorDailyProjectRecords.qryLocateProject.title']}</button>`
-            : nothing}
+      <main class="min-h-full space-y-6 bg-[var(--page-bg,#ffffff)] p-6 text-[var(--text-default,#0f172a)]">
+        <section class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] p-5 shadow-[var(--shadow-small,0 1px 2px rgba(0,0,0,.08))]">
+          <h1 class="text-xl font-bold text-[var(--text-strong,#0f172a)]">${msg['section.monitorDailyProjectRecords.project-selection.title']}</h1>
+          ${this.qryLocateProjectState === 'loading' ? html`<p class="py-4 text-[var(--text-muted,#64748b)]">${msg['organism.monitorDailyProjectRecords.qryLocateProject.title']}</p>` : nothing}
+          ${this.qryLocateProjectState !== 'loading' ? renderRows(locateRows, 'intent.monitorDailyProjectRecords.qryLocateProject.list.empty', [
+            ['intent.monitorDailyProjectRecords.qryLocateProject.list.column.name.label', ['name']],
+            ['intent.monitorDailyProjectRecords.qryLocateProject.list.column.status.label', ['status']],
+            ['intent.monitorDailyProjectRecords.qryLocateProject.list.column.plannedStartDate.label', ['plannedStartDate']],
+            ['intent.monitorDailyProjectRecords.qryLocateProject.list.column.plannedEndDate.label', ['plannedEndDate']],
+            ['intent.monitorDailyProjectRecords.qryLocateProject.list.column.authorizedBudget.label', ['authorizedBudget']],
+          ]) : nothing}
+          <div class="mt-4 flex justify-end"><button class="rounded-md bg-[var(--button-secondary-bg,#f1f5f9)] px-4 py-2 text-[var(--button-secondary-text,#0f172a)]" @click=${this.handleQryLocateProjectClick}>${msg['organism.monitorDailyProjectRecords.qryLocateProject.title']}</button></div>
+          ${locateRows.length > 0 ? html`<div class="mt-4 flex flex-wrap gap-2">${locateRows.map((row: unknown) => { const id = display(valueFrom(row, ['projectId', 'id'])); const selected = id === selectedProjectId; return id.length > 0 ? html`<button class="rounded-md border px-3 py-2 ${selected ? 'border-[var(--selected-border,#2563eb)] bg-[var(--selected-bg,#eff6ff)] text-[var(--selected-text,#1d4ed8)]' : 'border-[var(--border-default,#e2e8f0)]'}" @click=${() => { this.setQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId(id); this.handleQryInspectProjectExecutionOverviewClick(); }}>${display(valueFrom(row, ['name', 'projectName']))}</button>` : nothing; })}</div>` : nothing}
         </section>
 
-        ${overview
-          ? html`<section class="space-y-4 rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] p-4 shadow-[var(--shadow-small,0_1px_3px_rgba(0,0,0,0.1))]">
-              <h2 class="text-lg font-semibold text-[var(--text-strong,#0f172a)]">${msg['section.monitorDailyProjectRecords.execution-monitoring.title']}</h2>
-              <p class="text-base font-medium">${msg['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.title']}</p>
-              ${renderFields(overviewRecord, overviewFields)}
-              <div class="grid gap-4 md:grid-cols-2">
-                <section class="rounded-md border border-[var(--border-subtle,#e2e8f0)] p-4">
-                  <h3 class="mb-3 font-medium">${msg['organism.monitorDailyProjectRecords.qryInspectProjectTimeLogs.title']}</h3>
-                  <select class="w-full rounded-md border border-[var(--border-default,#e2e8f0)] bg-[var(--input-bg,#ffffff)] p-2" .value=${this.qryInspectProjectTimeLogsTimeLogTimeLogId} @change=${this.handleQryInspectProjectTimeLogsTimeLogTimeLogIdChange}>
-                    <option value="">${msg['intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.title']}</option>
-                    ${timeLogIds.map((id: string) => html`<option value=${id}>${id}</option>`)}
-                  </select>
-                  <button type="button" class="mt-3 rounded-md bg-[var(--button-secondary-bg,#ffffff)] px-3 py-2 text-sm text-[var(--button-secondary-text,#334155)]" ?disabled=${!this.qryInspectProjectTimeLogsTimeLogTimeLogId || this.qryInspectProjectTimeLogsState === 'loading'} @click=${this.handleQryInspectProjectTimeLogsClick}>${msg['organism.monitorDailyProjectRecords.qryInspectProjectTimeLogs.title']}</button>
-                  ${this.qryInspectProjectTimeLogsData ? renderFields(asRecord(this.qryInspectProjectTimeLogsData), timeLogFields) : nothing}
-                  ${timeLogRows.map((item: unknown) => renderFields(asRecord(item), timeLogFields))}
-                </section>
-                <section class="rounded-md border border-[var(--border-subtle,#e2e8f0)] p-4">
-                  <h3 class="mb-3 font-medium">${msg['organism.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.title']}</h3>
-                  <select class="w-full rounded-md border border-[var(--border-default,#e2e8f0)] bg-[var(--input-bg,#ffffff)] p-2" .value=${this.qryInspectProjectMaterialUsagesMaterialUsageMaterialUsageId} @change=${this.handleQryInspectProjectMaterialUsagesMaterialUsageMaterialUsageIdChange}>
-                    <option value="">${msg['intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.title']}</option>
-                    ${materialUsageIds.map((id: string) => html`<option value=${id}>${id}</option>`)}
-                  </select>
-                  <button type="button" class="mt-3 rounded-md bg-[var(--button-secondary-bg,#ffffff)] px-3 py-2 text-sm text-[var(--button-secondary-text,#334155)]" ?disabled=${!this.qryInspectProjectMaterialUsagesMaterialUsageMaterialUsageId || this.qryInspectProjectMaterialUsagesState === 'loading'} @click=${this.handleQryInspectProjectMaterialUsagesClick}>${msg['organism.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.title']}</button>
-                  ${this.qryInspectProjectMaterialUsagesData ? renderFields(asRecord(this.qryInspectProjectMaterialUsagesData), materialFields) : nothing}
-                  ${materialRows.map((item: unknown) => renderFields(asRecord(item), materialFields))}
-                </section>
-              </div>
-            </section>`
-          : nothing}
-      </main>
-    `;
+        ${selectedProjectId ? html`
+          <section class="space-y-4">
+            <h2 class="text-lg font-bold">${msg['section.monitorDailyProjectRecords.execution-monitoring.title']}</h2>
+            <div class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-alt-bg,#f8fafc)] p-5">
+              <h3 class="font-semibold">${msg['organism.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.title']}</h3>
+              ${this.qryInspectProjectExecutionOverviewState === 'loading' ? html`<p class="py-4 text-[var(--text-muted,#64748b)]">${msg['intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.title']}</p>` : nothing}
+              ${overviewRows.length > 0 ? html`<dl class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">${overviewFields.map(([key, names]) => html`<div><dt class="text-sm text-[var(--text-muted,#64748b)]">${msg[key]}</dt><dd class="font-medium">${display(valueFrom(overviewRows[0], names))}</dd></div>`)}</dl>` : nothing}
+            </div>
+            <div class="grid gap-4 lg:grid-cols-2">
+              <div class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] p-5"><h3 class="font-semibold">${msg['organism.monitorDailyProjectRecords.qryInspectProjectTimeLogs.title']}</h3>${this.qryInspectProjectTimeLogsState === 'loading' ? html`<p class="py-3 text-[var(--text-muted,#64748b)]">${msg['intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.title']}</p>` : renderRows(timeLogRows, 'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.empty', [['intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.workDate.label', ['workDate']], ['intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.hoursWorked.label', ['hoursWorked']], ['intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.status.label', ['status']]])}<div class="mt-3 flex flex-wrap gap-2">${idList(valueFrom(overview, ['timeLogIds'])).map((id: string) => html`<button class="rounded-md bg-[var(--button-secondary-bg,#f1f5f9)] px-3 py-2 text-[var(--button-secondary-text,#0f172a)]" @click=${() => { this.setQryInspectProjectTimeLogsTimeLogTimeLogId(id); this.handleQryInspectProjectTimeLogsClick(); }}>${id}</button>`)}</div></div>
+              <div class="rounded-lg border border-[var(--border-default,#e2e8f0)] bg-[var(--surface-bg,#ffffff)] p-5"><h3 class="font-semibold">${msg['organism.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.title']}</h3>${this.qryInspectProjectMaterialUsagesState === 'loading' ? html`<p class="py-3 text-[var(--text-muted,#64748b)]">${msg['intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.title']}</p>` : renderRows(materialRows, 'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.empty', [['intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.quantity.label', ['quantity']], ['intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.usageDescription.label', ['usageDescription']], ['intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.consumedOn.label', ['consumedOn']], ['intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.unitCostBasis.label', ['unitCostBasis']]])}<div class="mt-3 flex flex-wrap gap-2">${idList(valueFrom(overview, ['materialUsageIds'])).map((id: string) => html`<button class="rounded-md bg-[var(--button-secondary-bg,#f1f5f9)] px-3 py-2 text-[var(--button-secondary-text,#0f172a)]" @click=${() => { this.setQryInspectProjectMaterialUsagesMaterialUsageMaterialUsageId(id); this.handleQryInspectProjectMaterialUsagesClick(); }}>${id}</button>`)}</div></div>
+            </div>
+          </section>
+        ` : nothing}
+      </main>`;
   }
 }

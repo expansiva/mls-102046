@@ -1,30 +1,9 @@
 {
-  "savedAt": "2026-08-18T15:22:29.762Z",
+  "savedAt": "2026-08-18T19:36:25.530Z",
   "planId": "materialize-phase-pages-verify-v2-v3",
   "attempt": 3,
-  "brokenCount": 8,
+  "brokenCount": 2,
   "broken": [
-    {
-      "planId": "materialize-declinechangeorder-l2-page",
-      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.defs.ts",
-      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts",
-      "typecheck": "passed",
-      "errors": [
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11DeclineChangeOrderPage'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11DeclineChangeOrderPage'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11DeclineChangeOrderPage'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11DeclineChangeOrderPage'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11DeclineChangeOrderPage'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11DeclineChangeOrderPage'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11DeclineChangeOrderPage'."
-      ],
-      "warnings": [
-        "declineChangeOrder: generated page does not render textual mutation feedback: cmdDeclineChangeOrderDecision",
-        "declineChangeOrder: generated page does not render textual mutation feedback: cmdHandoffDeclinedChangeOrderToFieldCoordinator",
-        "cmdDeclineChangeOrderDecision.changeOrderChangeOrderId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
-        "cmdHandoffDeclinedChangeOrderToFieldCoordinator.changeOrderChangeOrderId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
-      ]
-    },
     {
       "planId": "materialize-forwardchangeorderforclientapproval-l2-page",
       "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.defs.ts",
@@ -38,74 +17,60 @@
       ]
     },
     {
-      "planId": "materialize-recordprojectmaterialusage-l2-page",
-      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.defs.ts",
-      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts",
-      "typecheck": "passed",
-      "errors": [
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2551 - Property 'cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageId' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'. Did you mean 'cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId'?"
-      ],
-      "warnings": [
-        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdCreateMaterialUsage",
-        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdHandoffMaterialUsageToFieldCoordinator",
-        "cmdCreateMaterialUsage.inventoryBalanceInventoryBalanceId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
-      ]
-    },
-    {
-      "planId": "materialize-clientbillingsummaryview-page21-l2-page",
-      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.defs.ts",
-      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts",
-      "typecheck": "not-applicable",
-      "errors": [
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts - TS2339 - Property 'map' does not exist on type 'string'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts - TS2339 - Property 'map' does not exist on type 'string'."
-      ],
-      "warnings": []
-    },
-    {
-      "planId": "materialize-projecttimelineview-page21-l2-page",
-      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.defs.ts",
-      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts",
-      "typecheck": "not-applicable",
-      "errors": [
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS2300 - Duplicate identifier 'BuildFlowFsmProjectTimelineViewBase'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS2300 - Duplicate identifier 'BuildFlowFsmProjectTimelineViewBase'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS2552 - Cannot find name 'messages'. Did you mean 'onmessage'?"
-      ],
-      "warnings": []
-    },
-    {
-      "planId": "materialize-declinechangeorder-page31-l2-page",
-      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.defs.ts",
-      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts",
-      "typecheck": "not-applicable",
-      "errors": [
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts - TS2300 - Duplicate identifier 'BuildFlowFsmDeclineChangeOrderBase'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts - TS2300 - Duplicate identifier 'BuildFlowFsmDeclineChangeOrderBase'.",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts - TS2552 - Cannot find name 'messages'. Did you mean 'onmessage'?",
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts - TS2339 - Property 'clientId' does not exist on type 'QryLocateChangeOrderOutput'."
-      ],
-      "warnings": [
-        "declineChangeOrder: generated page does not render textual mutation feedback: cmdDeclineChangeOrderDecision",
-        "declineChangeOrder: generated page does not render textual mutation feedback: cmdHandoffDeclinedChangeOrderToFieldCoordinator"
-      ]
-    },
-    {
-      "planId": "materialize-monitordailyprojectrecords-page31-l2-page",
-      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.defs.ts",
-      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts",
-      "typecheck": "not-applicable",
-      "errors": [
-        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts - TS2345 - Argument of type '([field, labelKey]: [string, keyof MessageType]) => TemplateResult<1>' is not assignable to parameter of type '(value: string[], index: number, array: string[][]) => TemplateResult<1>'. Types of parameters '__0' and 'value' are incompatible. Type 'string[]' is not assignable to type '[string, \"section.monitorDailyProjectRecords.project-selection.title\" | \"organism.monitorDailyProjectRecords.qryLocateProject.title\" | \"intent.monitorDailyProjectRecords.qryLocateProject.list.title\" | ... 55 more ... | \"section.monitorDailyProjectRecords.project-selection-and-overview.title\"]'. Target requires 2 element(s) but source may have fewer."
-      ],
-      "warnings": []
-    },
-    {
       "planId": "materialize-projectcatalogue-page31-l2-page",
       "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.defs.ts",
       "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts",
       "typecheck": "not-applicable",
       "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Obras\"' is not assignable to type '\"Projects\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Lista de obras\"' is not assignable to type '\"Project list\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Obras disponíveis\"' is not assignable to type '\"Available projects\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Nenhuma obra encontrada.\"' is not assignable to type '\"No projects found.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Obra\"' is not assignable to type '\"Project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Cliente\"' is not assignable to type '\"Client\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Nome\"' is not assignable to type '\"Name\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Endereço\"' is not assignable to type '\"Address\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Orçamento autorizado\"' is not assignable to type '\"Authorized budget\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Início planejado\"' is not assignable to type '\"Planned start\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Fim planejado\"' is not assignable to type '\"Planned end\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Excluir obra\"' is not assignable to type '\"Remove project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Obra selecionada\"' is not assignable to type '\"Selected project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Excluir\"' is not assignable to type '\"Remove\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Dados da obra\"' is not assignable to type '\"Project details\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Nova obra\"' is not assignable to type '\"New project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Cadastrar obra\"' is not assignable to type '\"Create project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Cadastrar obra\"' is not assignable to type '\"Create project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Cliente\"' is not assignable to type '\"Client\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Nome\"' is not assignable to type '\"Name\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Endereço\"' is not assignable to type '\"Address\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Orçamento autorizado\"' is not assignable to type '\"Authorized budget\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Início planejado\"' is not assignable to type '\"Planned start\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Fim planejado\"' is not assignable to type '\"Planned end\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Atualizar obra\"' is not assignable to type '\"Update project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Editar dados da obra\"' is not assignable to type '\"Edit project details\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Salvar alterações\"' is not assignable to type '\"Save changes\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Cliente\"' is not assignable to type '\"Client\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Nome\"' is not assignable to type '\"Name\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Endereço\"' is not assignable to type '\"Address\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Orçamento autorizado\"' is not assignable to type '\"Authorized budget\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Início planejado\"' is not assignable to type '\"Planned start\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Fim planejado\"' is not assignable to type '\"Planned end\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Escolha um cliente\"' is not assignable to type '\"Choose a client\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Clientes\"' is not assignable to type '\"Clients\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Nenhum cliente encontrado.\"' is not assignable to type '\"No clients found.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Cliente\"' is not assignable to type '\"Client\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Nome\"' is not assignable to type '\"Name\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"E-mail\"' is not assignable to type '\"Email\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Telefone\"' is not assignable to type '\"Phone\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Obra cadastrada com sucesso.\"' is not assignable to type '\"Project created successfully.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Não foi possível cadastrar a obra.\"' is not assignable to type '\"The project could not be created.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Obra atualizada com sucesso.\"' is not assignable to type '\"Project updated successfully.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Não foi possível atualizar a obra.\"' is not assignable to type '\"The project could not be updated.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Obra excluída com sucesso.\"' is not assignable to type '\"Project removed successfully.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Não foi possível excluir a obra.\"' is not assignable to type '\"The project could not be removed.\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Área de trabalho da obra\"' is not assignable to type '\"Project workspace\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Cadastrar uma obra\"' is not assignable to type '\"Create a project\"'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2322 - Type '\"Área da obra selecionada\"' is not assignable to type '\"Selected project workspace\"'.",
         "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2339 - Property 'clientName' does not exist on type 'QryListProjectOutput'.",
         "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2339 - Property 'clientName' does not exist on type 'QryListProjectOutput'."
       ],
