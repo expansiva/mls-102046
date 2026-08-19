@@ -1,0 +1,408 @@
+stor.server.ts:313 project 102020 with 33 files updated, lastModified:2026-08-18T19:25:49.395Z
+stor.server.ts:313 project 102021 with 20 files updated, lastModified:2026-08-18T19:24:32.794Z
+stor.server.ts:313 project 102046 with 88 files updated, lastModified:2026-08-18T19:26:36.266Z
+(index):64 cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+(anonymous) @ (index):64
+(anonymous) @ (index):64
+(index):52 Erro on play notification audio: NotAllowedError: play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD
+console.warn @ (index):52
+(anonymous) @ collabMessagesSyncNotifications.js:403
+Promise.catch
+showThreadNotificationIfNeeded @ collabMessagesSyncNotifications.js:403
+await in showThreadNotificationIfNeeded
+updateThreadInBackground @ collabMessagesSyncNotifications.js:297
+await in updateThreadInBackground
+getThreadUpdateInBackground @ collabMessagesSyncNotifications.js:192
+await in getThreadUpdateInBackground
+(anonymous) @ collabMessagesSyncNotifications.js:167
+setTimeout
+scheduleNextSync @ collabMessagesSyncNotifications.js:157
+enqueueThreadForSync @ collabMessagesSyncNotifications.js:152
+(anonymous) @ collabMessagesSyncNotifications.js:141
+({registry: Object.keys(mls.editor.models).length, monaco: monaco.editor.getModels().length, defs: monaco.editor.getModels().filter(m => m.uri.path.includes('.defs.')).length})
+{registry: 8, monaco: 8, defs: 0}
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getValue (monaco.js:77:4324)
+    at _checkSameContent (libModel.js:612:86)
+    at _changeStatusFile (libModel.js:588:11)
+    at _updateModelStatusTS (libModel.js:578:11)
+    at async libModel.js:410:21
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+monaco.js:75 Uncaught (in promise) Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getLineCount (monaco.js:77:5049)
+    at findLinesByText (codeLensLit.js:45:29)
+    at setCodeLensServiceDetails (codeLensLit.js:36:19)
+    at setCodeLens (codeLensLit.js:12:5)
+    at Module.onAfterChange (_102020_enhancementAura:146:9)
+    at _updateModelStatusTS (libModel.js:573:43)
+    at async libModel.js:410:21
+_assertNotDisposed @ monaco.js:75
+getLineCount @ monaco.js:77
+findLinesByText @ codeLensLit.js:45
+setCodeLensServiceDetails @ codeLensLit.js:36
+setCodeLens @ codeLensLit.js:12
+onAfterChange @ _102020_enhancementAura:146
+_updateModelStatusTS @ libModel.js:573
+await in _updateModelStatusTS
+(anonymous) @ libModel.js:410
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getValue (monaco.js:77:4324)
+    at _checkSameContent (libModel.js:612:86)
+    at _changeStatusFile (libModel.js:588:11)
+    at _updateModelStatusTS (libModel.js:578:11)
+    at async libModel.js:410:21
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getValue (monaco.js:77:4324)
+    at _checkSameContent (libModel.js:612:86)
+    at _changeStatusFile (libModel.js:588:11)
+    at _updateModelStatusTS (libModel.js:578:11)
+    at async libModel.js:410:21
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+monaco.js:75 Uncaught (in promise) Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getLineCount (monaco.js:77:5049)
+    at findLinesByText (codeLensLit.js:45:29)
+    at setCodeLensServiceDetails (codeLensLit.js:36:19)
+    at setCodeLens (codeLensLit.js:12:5)
+    at Module.onAfterChange (_102020_enhancementAura:146:9)
+    at _updateModelStatusTS (libModel.js:573:43)
+    at async libModel.js:410:21
+_assertNotDisposed @ monaco.js:75
+getLineCount @ monaco.js:77
+findLinesByText @ codeLensLit.js:45
+setCodeLensServiceDetails @ codeLensLit.js:36
+setCodeLens @ codeLensLit.js:12
+onAfterChange @ _102020_enhancementAura:146
+_updateModelStatusTS @ libModel.js:573
+await in _updateModelStatusTS
+(anonymous) @ libModel.js:410
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getValue (monaco.js:77:4324)
+    at _checkSameContent (libModel.js:612:86)
+    at _changeStatusFile (libModel.js:588:11)
+    at _updateModelStatusTS (libModel.js:578:11)
+    at async libModel.js:410:21
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+monaco.js:75 Uncaught (in promise) Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getLineCount (monaco.js:77:5049)
+    at findLinesByText (codeLensLit.js:45:29)
+    at setCodeLensServiceDetails (codeLensLit.js:36:19)
+    at setCodeLens (codeLensLit.js:12:5)
+    at Module.onAfterChange (_102020_enhancementAura:146:9)
+    at _updateModelStatusTS (libModel.js:573:43)
+    at async libModel.js:410:21
+_assertNotDisposed @ monaco.js:75
+getLineCount @ monaco.js:77
+findLinesByText @ codeLensLit.js:45
+setCodeLensServiceDetails @ codeLensLit.js:36
+setCodeLens @ codeLensLit.js:12
+onAfterChange @ _102020_enhancementAura:146
+_updateModelStatusTS @ libModel.js:573
+await in _updateModelStatusTS
+(anonymous) @ libModel.js:410
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getValue (monaco.js:77:4324)
+    at _checkSameContent (libModel.js:612:86)
+    at _changeStatusFile (libModel.js:588:11)
+    at _updateModelStatusTS (libModel.js:578:11)
+    at async libModel.js:410:21
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+monaco.js:75 Uncaught (in promise) Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getLineCount (monaco.js:77:5049)
+    at findLinesByText (codeLensLit.js:45:29)
+    at setCodeLensServiceDetails (codeLensLit.js:36:19)
+    at setCodeLens (codeLensLit.js:12:5)
+    at Module.onAfterChange (_102020_enhancementAura:146:9)
+    at _updateModelStatusTS (libModel.js:573:43)
+    at async libModel.js:410:21
+_assertNotDisposed @ monaco.js:75
+getLineCount @ monaco.js:77
+findLinesByText @ codeLensLit.js:45
+setCodeLensServiceDetails @ codeLensLit.js:36
+setCodeLens @ codeLensLit.js:12
+onAfterChange @ _102020_enhancementAura:146
+_updateModelStatusTS @ libModel.js:573
+await in _updateModelStatusTS
+(anonymous) @ libModel.js:410
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getValue (monaco.js:77:4324)
+    at _checkSameContent (libModel.js:612:86)
+    at _changeStatusFile (libModel.js:588:11)
+    at _updateModelStatusTS (libModel.js:578:11)
+    at async libModel.js:410:21
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getValue (monaco.js:77:4324)
+    at _checkSameContent (libModel.js:612:86)
+    at _changeStatusFile (libModel.js:588:11)
+    at _updateModelStatusTS (libModel.js:578:11)
+    at async libModel.js:410:21
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:665
+compileGeneratedTs @ cfeMaterializeStudio.js:327
+await in compileGeneratedTs
+saveGeneratedTs @ cfeMaterializeStudio.js:188
+await in saveGeneratedTs
+afterPromptStep @ agentCfeMaterializeGen?t=47b3ec23f2aed7f0732dc8f886d945c613ea79ea:162
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+agentCfeMaterializePhase?t=320291198a6e4097d0d9530dfed3c0f87fdbd117:78 [agentCfeMaterializePhase] verify released 21 borrowed monaco model(s)
+agentCfeMaterializePhase?t=320291198a6e4097d0d9530dfed3c0f87fdbd117:78 [agentCfeMaterializePhase] verify released 9 borrowed monaco model(s)
+agentCfeMaterializePhase?t=320291198a6e4097d0d9530dfed3c0f87fdbd117:78 [agentCfeMaterializePhase] verify released 9 borrowed monaco model(s)
+agentCfeMaterializePhase?t=320291198a6e4097d0d9530dfed3c0f87fdbd117:78 [agentCfeMaterializePhase] verify released 6 borrowed monaco model(s)
