@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/workflows/index.defs.ts" enhancement="_blank"/>
 
-import type { Ns4WorkflowIndexArtifactV3 } from '/_102020_/l2/agentNewSolution/types.js';
+import type { Ns4WorkflowIndexArtifactV3 } from '/_102035_/l2/solution/helpers/ns4Types.js';
 
 export const buildFlowFsmWorkflowIndex = {
   "schemaVersion": "2026-08-12-ns4-workflow-index-v5",
