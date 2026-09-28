@@ -229,7 +229,7 @@ export const pipeline = [
       "changeOrderCatalogue__l2_shared"
     ],
     "skills": [
-      "_102020_/l2/agentChangeFrontend/skills/genCfePage11RenderTs.ts"
+      "_102020_/l2/agentMaterializeL2/skills/genCfePage11RenderTs.ts"
     ],
     "visualStyle": {},
     "agent": "agentCfeMaterializeGen"

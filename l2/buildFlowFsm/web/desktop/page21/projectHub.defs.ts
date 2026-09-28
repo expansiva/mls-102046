@@ -260,7 +260,7 @@ export const pipeline = [
       "projectHub__l2_shared"
     ],
     "skills": [
-      "_102020_/l2/agentChangeFrontend/skills/genCfePage21RenderTs.ts",
+      "_102020_/l2/agentMaterializeL2/skills/genCfePage21RenderTs.ts",
       "_102020_/l4/collabux/templates/dashboardCommandCenter/page21.md"
     ],
     "visualStyle": {},

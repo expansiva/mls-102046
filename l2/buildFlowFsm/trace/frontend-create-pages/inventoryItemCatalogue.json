@@ -3,5 +3,5 @@
   "status": "done",
   "pageId": "inventoryItemCatalogue",
   "moduleName": "buildFlowFsm",
-  "agent": "agentChangeFrontend"
+  "agent": "agentMaterializeL2"
 }

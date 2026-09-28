@@ -14,8 +14,8 @@
     "longMemory": {
       "actualDate": "2026-08-18",
       "userName": "Wagner",
-      "taskName": "agentChangeFrontend",
-      "flowName": "agentChangeFrontend",
+      "taskName": "agentMaterializeL2",
+      "flowName": "agentMaterializeL2",
       "version": "create-v1",
       "cliCommand": "run"
     },
@@ -23,7 +23,7 @@
       {
         "stepId": 1,
         "type": "agent",
-        "agentName": "agentChangeFrontend",
+        "agentName": "agentMaterializeL2",
         "nextSteps": [
           {
             "type": "agent",
@@ -831,11 +831,11 @@
           "input": [
             {
               "type": "system",
-              "content": "agentChangeFrontend deterministic bootstrap. The root LLM is skipped by AgentIntentAddMessageAI.skipRootLLM."
+              "content": "agentMaterializeL2 deterministic bootstrap. The root LLM is skipped by AgentIntentAddMessageAI.skipRootLLM."
             },
             {
               "type": "human",
-              "content": "agentChangeFrontend"
+              "content": "agentMaterializeL2"
             }
           ],
           "cost": 0,
